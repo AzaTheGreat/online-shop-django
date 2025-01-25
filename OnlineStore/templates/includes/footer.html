@@ -1,0 +1,32 @@
+<footer id="footer">
+    <div class="inner">
+        <section>
+            <h2>Have any questions? Contact with us!</h2>
+            <form method="post" action="{% url 'users:feedback_processing'%}">
+                {% csrf_token %}
+                <div class="fields">
+                    <div class="field half">
+                        <input type="text" name="feedback_name" id="feedback_name" placeholder="Name" />
+                    </div>
+                    <div class="field half">
+                        <input type="email" name="feedback_email" id="feedback_email" placeholder="Email" />
+                    </div>
+                    <div class="field">
+                        <textarea name="feedback_message" id="feedback_message" placeholder="Message"></textarea>
+                    </div>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send" class="primary" /></li>
+                </ul>
+            </form>
+        </section>
+        <section>
+            <h2>My Resources</h2>
+            <ul class="icons">
+                <li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+                <li><a href="#" class="icon solid style2 fa-phone"><span class="label">Telegram</span></a></li>
+                <li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+        </section>
+    </div>
+</footer>

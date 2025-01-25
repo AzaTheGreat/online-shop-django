@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Your profile</h1>
+<p>Hello, {{ request.user.get_username }}. Totally you have <strong>{{ request.user.orders.count }}</strong> orders.</p>
+<p>Your orders: <a href="{% url 'users:user_orders' %}">Go to orders</a></p>
+<p><a href="{% url 'users:logout' %}">Logout</a></p>
+<p><a href="{% url 'users:password_change' %}">Change password</a></p>
+{% endblock %}

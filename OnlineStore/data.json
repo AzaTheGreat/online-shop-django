@@ -1,0 +1,2519 @@
+{
+    "type": "database",
+    "name": "db",
+    "objects": [
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_group",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_group\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"name\" varchar(150) NOT NULL UNIQUE)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_group_permissions",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_group_permissions\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"group_id\" integer NOT NULL REFERENCES \"auth_group\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"permission_id\" integer NOT NULL REFERENCES \"auth_permission\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "group_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_group\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "permission_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_permission\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_permission",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_permission\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"content_type_id\" integer NOT NULL REFERENCES \"django_content_type\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"codename\" varchar(100) NOT NULL, \"name\" varchar(255) NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "content_type_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"django_content_type\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "codename",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    1,
+                    "add_logentry",
+                    "Can add log entry"
+                ],
+                [
+                    2,
+                    1,
+                    "change_logentry",
+                    "Can change log entry"
+                ],
+                [
+                    3,
+                    1,
+                    "delete_logentry",
+                    "Can delete log entry"
+                ],
+                [
+                    4,
+                    1,
+                    "view_logentry",
+                    "Can view log entry"
+                ],
+                [
+                    5,
+                    2,
+                    "add_permission",
+                    "Can add permission"
+                ],
+                [
+                    6,
+                    2,
+                    "change_permission",
+                    "Can change permission"
+                ],
+                [
+                    7,
+                    2,
+                    "delete_permission",
+                    "Can delete permission"
+                ],
+                [
+                    8,
+                    2,
+                    "view_permission",
+                    "Can view permission"
+                ],
+                [
+                    9,
+                    3,
+                    "add_group",
+                    "Can add group"
+                ],
+                [
+                    10,
+                    3,
+                    "change_group",
+                    "Can change group"
+                ],
+                [
+                    11,
+                    3,
+                    "delete_group",
+                    "Can delete group"
+                ],
+                [
+                    12,
+                    3,
+                    "view_group",
+                    "Can view group"
+                ],
+                [
+                    13,
+                    4,
+                    "add_user",
+                    "Can add user"
+                ],
+                [
+                    14,
+                    4,
+                    "change_user",
+                    "Can change user"
+                ],
+                [
+                    15,
+                    4,
+                    "delete_user",
+                    "Can delete user"
+                ],
+                [
+                    16,
+                    4,
+                    "view_user",
+                    "Can view user"
+                ],
+                [
+                    17,
+                    5,
+                    "add_contenttype",
+                    "Can add content type"
+                ],
+                [
+                    18,
+                    5,
+                    "change_contenttype",
+                    "Can change content type"
+                ],
+                [
+                    19,
+                    5,
+                    "delete_contenttype",
+                    "Can delete content type"
+                ],
+                [
+                    20,
+                    5,
+                    "view_contenttype",
+                    "Can view content type"
+                ],
+                [
+                    21,
+                    6,
+                    "add_session",
+                    "Can add session"
+                ],
+                [
+                    22,
+                    6,
+                    "change_session",
+                    "Can change session"
+                ],
+                [
+                    23,
+                    6,
+                    "delete_session",
+                    "Can delete session"
+                ],
+                [
+                    24,
+                    6,
+                    "view_session",
+                    "Can view session"
+                ],
+                [
+                    25,
+                    7,
+                    "add_itemtag",
+                    "Can add Category"
+                ],
+                [
+                    26,
+                    7,
+                    "change_itemtag",
+                    "Can change Category"
+                ],
+                [
+                    27,
+                    7,
+                    "delete_itemtag",
+                    "Can delete Category"
+                ],
+                [
+                    28,
+                    7,
+                    "view_itemtag",
+                    "Can view Category"
+                ],
+                [
+                    29,
+                    8,
+                    "add_taggeditem",
+                    "Can add tagged item"
+                ],
+                [
+                    30,
+                    8,
+                    "change_taggeditem",
+                    "Can change tagged item"
+                ],
+                [
+                    31,
+                    8,
+                    "delete_taggeditem",
+                    "Can delete tagged item"
+                ],
+                [
+                    32,
+                    8,
+                    "view_taggeditem",
+                    "Can view Item"
+                ],
+                [
+                    33,
+                    9,
+                    "add_item",
+                    "Can add Item"
+                ],
+                [
+                    34,
+                    9,
+                    "change_item",
+                    "Can change Item"
+                ],
+                [
+                    35,
+                    9,
+                    "delete_item",
+                    "Can delete Item"
+                ],
+                [
+                    36,
+                    9,
+                    "view_item",
+                    "Can view Item"
+                ],
+                [
+                    37,
+                    10,
+                    "add_cart",
+                    "Can add Cart"
+                ],
+                [
+                    38,
+                    10,
+                    "change_cart",
+                    "Can change Cart"
+                ],
+                [
+                    39,
+                    10,
+                    "delete_cart",
+                    "Can delete Cart"
+                ],
+                [
+                    40,
+                    10,
+                    "view_cart",
+                    "Can view Cart"
+                ],
+                [
+                    41,
+                    11,
+                    "add_cartitem",
+                    "Can add Item in cart"
+                ],
+                [
+                    42,
+                    11,
+                    "change_cartitem",
+                    "Can change Item in cart"
+                ],
+                [
+                    43,
+                    11,
+                    "delete_cartitem",
+                    "Can delete Item in cart"
+                ],
+                [
+                    44,
+                    11,
+                    "view_cartitem",
+                    "Can view Item in cart"
+                ],
+                [
+                    45,
+                    12,
+                    "add_order",
+                    "Can add Order"
+                ],
+                [
+                    46,
+                    12,
+                    "change_order",
+                    "Can change Order"
+                ],
+                [
+                    47,
+                    12,
+                    "delete_order",
+                    "Can delete Order"
+                ],
+                [
+                    48,
+                    12,
+                    "view_order",
+                    "Can view Order"
+                ],
+                [
+                    49,
+                    13,
+                    "add_orderitem",
+                    "Can add Items in order"
+                ],
+                [
+                    50,
+                    13,
+                    "change_orderitem",
+                    "Can change Items in order"
+                ],
+                [
+                    51,
+                    13,
+                    "delete_orderitem",
+                    "Can delete Items in order"
+                ],
+                [
+                    52,
+                    13,
+                    "view_orderitem",
+                    "Can view Items in order"
+                ],
+                [
+                    53,
+                    14,
+                    "add_shippingaddress",
+                    "Can add Delivery address"
+                ],
+                [
+                    54,
+                    14,
+                    "change_shippingaddress",
+                    "Can change Delivery address"
+                ],
+                [
+                    55,
+                    14,
+                    "delete_shippingaddress",
+                    "Can delete Delivery address"
+                ],
+                [
+                    56,
+                    14,
+                    "view_shippingaddress",
+                    "Can view Delivery address"
+                ],
+                [
+                    57,
+                    15,
+                    "add_feedback",
+                    "Can add Feedback"
+                ],
+                [
+                    58,
+                    15,
+                    "change_feedback",
+                    "Can change Feedback"
+                ],
+                [
+                    59,
+                    15,
+                    "delete_feedback",
+                    "Can delete Feedback"
+                ],
+                [
+                    60,
+                    15,
+                    "view_feedback",
+                    "Can view Feedback"
+                ],
+                [
+                    61,
+                    16,
+                    "add_tag",
+                    "Can add tag"
+                ],
+                [
+                    62,
+                    16,
+                    "change_tag",
+                    "Can change tag"
+                ],
+                [
+                    63,
+                    16,
+                    "delete_tag",
+                    "Can delete tag"
+                ],
+                [
+                    64,
+                    16,
+                    "view_tag",
+                    "Can view tag"
+                ],
+                [
+                    65,
+                    17,
+                    "add_taggeditem",
+                    "Can add tagged item"
+                ],
+                [
+                    66,
+                    17,
+                    "change_taggeditem",
+                    "Can change tagged item"
+                ],
+                [
+                    67,
+                    17,
+                    "delete_taggeditem",
+                    "Can delete tagged item"
+                ],
+                [
+                    68,
+                    17,
+                    "view_taggeditem",
+                    "Can view tagged item"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_user",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_user\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"password\" varchar(128) NOT NULL, \"last_login\" datetime NULL, \"is_superuser\" bool NOT NULL, \"username\" varchar(150) NOT NULL UNIQUE, \"last_name\" varchar(150) NOT NULL, \"email\" varchar(254) NOT NULL, \"is_staff\" bool NOT NULL, \"is_active\" bool NOT NULL, \"date_joined\" datetime NOT NULL, \"first_name\" varchar(150) NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "password",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "last_login",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_superuser",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "username",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "last_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "email",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_staff",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_active",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "date_joined",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "first_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "pbkdf2_sha256$260000$zQkvi5aIjanhjLrTaXCdVp$YwjKf07s42iXvKT987vzcv99VkYt67YXGHXAlTfJ2qU=",
+                    "2024-01-11 15:48:49.603603",
+                    1,
+                    "aza",
+                    "",
+                    "lymarbogdan2002@gmail.com",
+                    1,
+                    1,
+                    "2024-01-10 15:22:09.365854",
+                    ""
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_user_groups",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_user_groups\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"user_id\" integer NOT NULL REFERENCES \"auth_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"group_id\" integer NOT NULL REFERENCES \"auth_group\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_user\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "group_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_group\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "auth_user_user_permissions",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"auth_user_user_permissions\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"user_id\" integer NOT NULL REFERENCES \"auth_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"permission_id\" integer NOT NULL REFERENCES \"auth_permission\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_user\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "permission_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_permission\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "cart_cart",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"cart_cart\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"created_at\" datetime NOT NULL, \"user_id\" integer NOT NULL REFERENCES \"auth_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_user\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "cart_cartitem",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"cart_cartitem\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"quantity\" integer unsigned NOT NULL CHECK (\"quantity\" >= 0), \"cart_id\" bigint NOT NULL REFERENCES \"cart_cart\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"item_id\" bigint NOT NULL REFERENCES \"store_item\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "quantity",
+                    "type": "integer unsigned",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "CHECK",
+                            "definition": "CHECK (\"quantity\" >= 0)"
+                        }
+                    ]
+                },
+                {
+                    "name": "cart_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"cart_cart\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "item_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"store_item\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "checkout_order",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"checkout_order\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"payment_method\" varchar(20) NOT NULL, \"created_at\" datetime NOT NULL, \"status\" varchar(20) NOT NULL, \"user_id\" integer NOT NULL REFERENCES \"auth_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "payment_method",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "status",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_user\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "checkout_orderitem",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"checkout_orderitem\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"quantity\" integer unsigned NOT NULL CHECK (\"quantity\" >= 0), \"price\" decimal NOT NULL, \"item_id\" bigint NOT NULL REFERENCES \"store_item\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"order_id\" bigint NOT NULL REFERENCES \"checkout_order\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "quantity",
+                    "type": "integer unsigned",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "CHECK",
+                            "definition": "CHECK (\"quantity\" >= 0)"
+                        }
+                    ]
+                },
+                {
+                    "name": "price",
+                    "type": "decimal",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "item_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"store_item\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "order_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"checkout_order\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "checkout_shippingaddress",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"checkout_shippingaddress\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"first_name\" varchar(50) NOT NULL, \"last_name\" varchar(50) NOT NULL, \"email\" varchar(254) NOT NULL, \"phone\" varchar(20) NOT NULL, \"address_line_1\" varchar(200) NOT NULL, \"address_line_2\" varchar(200) NULL, \"order_id\" bigint NOT NULL UNIQUE REFERENCES \"checkout_order\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "first_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "last_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "email",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "phone",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "address_line_1",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "address_line_2",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "order_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"checkout_order\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_admin_log",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_admin_log\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"action_time\" datetime NOT NULL, \"object_id\" text NULL, \"object_repr\" varchar(200) NOT NULL, \"change_message\" text NOT NULL, \"content_type_id\" integer NULL REFERENCES \"django_content_type\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"user_id\" integer NOT NULL REFERENCES \"auth_user\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"action_flag\" smallint unsigned NOT NULL CHECK (\"action_flag\" >= 0))",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "action_time",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "object_id",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "object_repr",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "change_message",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "content_type_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"django_content_type\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "user_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"auth_user\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "action_flag",
+                    "type": "smallint unsigned",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "CHECK",
+                            "definition": "CHECK (\"action_flag\" >= 0)"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_content_type",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_content_type\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"app_label\" varchar(100) NOT NULL, \"model\" varchar(100) NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "app_label",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "model",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "admin",
+                    "logentry"
+                ],
+                [
+                    2,
+                    "auth",
+                    "permission"
+                ],
+                [
+                    3,
+                    "auth",
+                    "group"
+                ],
+                [
+                    4,
+                    "auth",
+                    "user"
+                ],
+                [
+                    5,
+                    "contenttypes",
+                    "contenttype"
+                ],
+                [
+                    6,
+                    "sessions",
+                    "session"
+                ],
+                [
+                    7,
+                    "store",
+                    "itemtag"
+                ],
+                [
+                    8,
+                    "store",
+                    "taggeditem"
+                ],
+                [
+                    9,
+                    "store",
+                    "item"
+                ],
+                [
+                    10,
+                    "cart",
+                    "cart"
+                ],
+                [
+                    11,
+                    "cart",
+                    "cartitem"
+                ],
+                [
+                    12,
+                    "checkout",
+                    "order"
+                ],
+                [
+                    13,
+                    "checkout",
+                    "orderitem"
+                ],
+                [
+                    14,
+                    "checkout",
+                    "shippingaddress"
+                ],
+                [
+                    15,
+                    "users",
+                    "feedback"
+                ],
+                [
+                    16,
+                    "taggit",
+                    "tag"
+                ],
+                [
+                    17,
+                    "taggit",
+                    "taggeditem"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_migrations",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_migrations\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"app\" varchar(255) NOT NULL, \"name\" varchar(255) NOT NULL, \"applied\" datetime NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "app",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "applied",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "contenttypes",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.309007"
+                ],
+                [
+                    2,
+                    "auth",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.332695"
+                ],
+                [
+                    3,
+                    "admin",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.354135"
+                ],
+                [
+                    4,
+                    "admin",
+                    "0002_logentry_remove_auto_add",
+                    "2024-01-10 15:20:56.371394"
+                ],
+                [
+                    5,
+                    "admin",
+                    "0003_logentry_add_action_flag_choices",
+                    "2024-01-10 15:20:56.384336"
+                ],
+                [
+                    6,
+                    "contenttypes",
+                    "0002_remove_content_type_name",
+                    "2024-01-10 15:20:56.404851"
+                ],
+                [
+                    7,
+                    "auth",
+                    "0002_alter_permission_name_max_length",
+                    "2024-01-10 15:20:56.419853"
+                ],
+                [
+                    8,
+                    "auth",
+                    "0003_alter_user_email_max_length",
+                    "2024-01-10 15:20:56.433853"
+                ],
+                [
+                    9,
+                    "auth",
+                    "0004_alter_user_username_opts",
+                    "2024-01-10 15:20:56.446184"
+                ],
+                [
+                    10,
+                    "auth",
+                    "0005_alter_user_last_login_null",
+                    "2024-01-10 15:20:56.459155"
+                ],
+                [
+                    11,
+                    "auth",
+                    "0006_require_contenttypes_0002",
+                    "2024-01-10 15:20:56.466540"
+                ],
+                [
+                    12,
+                    "auth",
+                    "0007_alter_validators_add_error_messages",
+                    "2024-01-10 15:20:56.476891"
+                ],
+                [
+                    13,
+                    "auth",
+                    "0008_alter_user_username_max_length",
+                    "2024-01-10 15:20:56.490964"
+                ],
+                [
+                    14,
+                    "auth",
+                    "0009_alter_user_last_name_max_length",
+                    "2024-01-10 15:20:56.502374"
+                ],
+                [
+                    15,
+                    "auth",
+                    "0010_alter_group_name_max_length",
+                    "2024-01-10 15:20:56.518026"
+                ],
+                [
+                    16,
+                    "auth",
+                    "0011_update_proxy_permissions",
+                    "2024-01-10 15:20:56.529654"
+                ],
+                [
+                    17,
+                    "auth",
+                    "0012_alter_user_first_name_max_length",
+                    "2024-01-10 15:20:56.545069"
+                ],
+                [
+                    18,
+                    "store",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.570963"
+                ],
+                [
+                    19,
+                    "cart",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.584929"
+                ],
+                [
+                    20,
+                    "cart",
+                    "0002_initial",
+                    "2024-01-10 15:20:56.612856"
+                ],
+                [
+                    21,
+                    "checkout",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.621864"
+                ],
+                [
+                    22,
+                    "checkout",
+                    "0002_initial",
+                    "2024-01-10 15:20:56.663719"
+                ],
+                [
+                    23,
+                    "sessions",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.676685"
+                ],
+                [
+                    24,
+                    "taggit",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.699691"
+                ],
+                [
+                    25,
+                    "taggit",
+                    "0002_auto_20150616_2121",
+                    "2024-01-10 15:20:56.711592"
+                ],
+                [
+                    26,
+                    "taggit",
+                    "0003_taggeditem_add_unique_index",
+                    "2024-01-10 15:20:56.721604"
+                ],
+                [
+                    27,
+                    "taggit",
+                    "0004_alter_taggeditem_content_type_alter_taggeditem_tag",
+                    "2024-01-10 15:20:56.745500"
+                ],
+                [
+                    28,
+                    "taggit",
+                    "0005_auto_20220424_2025",
+                    "2024-01-10 15:20:56.755474"
+                ],
+                [
+                    29,
+                    "users",
+                    "0001_initial",
+                    "2024-01-10 15:20:56.769436"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "django_session",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"django_session\" (\"session_key\" varchar(40) NOT NULL PRIMARY KEY, \"session_data\" text NOT NULL, \"expire_date\" datetime NOT NULL)",
+            "columns": [
+                {
+                    "name": "session_key",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY"
+                        }
+                    ]
+                },
+                {
+                    "name": "session_data",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "expire_date",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    "vp53zj575dyrm5urty1sijspulmehzz2",
+                    ".eJxVjEEOwiAQRe_C2hAolQ4u3XsGMswMUjU0Ke3KeHfbpAvdvvf-f6uI61Li2mSOI6uLsur0yxLSU-ou-IH1Pmma6jKPSe-JPmzTt4nldT3av4OCrWxrwXOGPnsnBgWll86RD4FtDkDGk7B1gEnMBlw2DJ6go8EmdHYAn9XnCwu9OJ0:1rNxIX:gPkg_acIl05JZ1JZGltaVam4dIOD2Yg3hV2i4tA5VGA",
+                    "2024-01-25 15:48:49.608619"
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "store_item",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"store_item\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"title\" varchar(200) NOT NULL, \"description\" text NOT NULL, \"slug\" varchar(50) NOT NULL UNIQUE, \"pub_date\" datetime NOT NULL, \"price\" decimal NOT NULL, \"old_price\" decimal NULL, \"image\" varchar(100) NOT NULL, \"is_available\" bool NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "title",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "slug",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "pub_date",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "price",
+                    "type": "decimal",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "old_price",
+                    "type": "decimal",
+                    "constraints": [
+                        {
+                            "type": null,
+                            "definition": "NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "image",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "is_available",
+                    "type": "bool",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    5,
+                    "Apple iPhone 13 Pro Max",
+                    "This smartphone is equipped with A15 Bionic chip and a triple camera system including wide-angle, telephoto and ultra-wide-angle cameras. It also has a 6.7-inch Super Retina XDR display, is water and dust resistant, and runs on iOS 15.",
+                    "Iphone-13-pro",
+                    "2023-02-27 08:41:13.930000",
+                    1000,
+                    1100,
+                    "items\/iphone13_NZPTaAW.jpg",
+                    1
+                ],
+                [
+                    6,
+                    "Portable Speakers JBL Charge 5",
+                    "This portable speaker delivers powerful sound and has a built-in rechargeable battery that provides up to 20 hours of music playback. It's also water and dust resistant and has a built-in USB port for charging other devices.",
+                    "JBL-Charge-5",
+                    "2023-02-27 08:41:51.543000",
+                    99,
+                    null,
+                    "items\/JBL-Charge-5_tpjg2Xk.webp",
+                    1
+                ],
+                [
+                    7,
+                    "Smart TV Samsung QE55QN85A",
+                    "TV with a diagonal of 55 inches and a resolution of 4K. It features QLED technology that delivers bright, rich colors, as well as HDR to help you see more detail on the screen. It runs on the Smart TV platform and supports an Internet browser and a variety of applications including Netflix, YouTube, Amazon Prime Video and more. It also has a built-in voice assistant that allows you to control your TV with your voice.",
+                    "Samsung-QE55QN85A",
+                    "2023-02-27 08:44:30.390000",
+                    800,
+                    null,
+                    "items\/Samsung_QE55QN85A.jfif",
+                    1
+                ],
+                [
+                    8,
+                    "Laptop Lenovo IdeaPad 5",
+                    "The Lenovo IdeaPad 5 laptop is a powerful computer with an Intel Core i5 processor, 8 GB of RAM and 512 GB of SSD storage. It has a 15.6-inch display with a resolution of 1920x1080 pixels, which provides bright and clear images. Also included is a built-in Intel Iris Xe graphics card, which allows you to run most games and applications",
+                    "lenovo-IdeaPad-5",
+                    "2023-02-27 09:42:32.318000",
+                    600,
+                    650,
+                    "items\/Lenovo_IdeaPad_5.webp",
+                    1
+                ],
+                [
+                    9,
+                    "Smartphone Xiaomi Redmi Note 11 Pro",
+                    "The Xiaomi Redmi Note 11 Pro smartphone is a high-quality phone with a 6.67-inch diagonal AMOLED display and a resolution of 1080x2400 pixels. It runs on Android 11 operating system and is powered by a Snapdragon 870 processor, 6GB of RAM and 128GB of internal storage. The phone also has an amazing 108MP camera with 4K video recording capabilities.",
+                    "Xiaomi-Redmi-Note-11-Pro",
+                    "2023-02-27 09:43:21.468000",
+                    249,
+                    null,
+                    "items\/Xiaomi-Redmi-Note-11-Pro_CgkQnGC.jpg",
+                    1
+                ],
+                [
+                    10,
+                    "Wireless Headphones Sony WH-1000XM4",
+                    "These headphones provide high-quality sound, thanks to noise canceling technology, you can enjoy music without any extraneous sounds.",
+                    "Sony-WH-1000XM4",
+                    "2023-02-27 09:44:31.950000",
+                    249,
+                    279,
+                    "items\/Sony-WH-1000XM4_YjrBbWL.jfif",
+                    1
+                ],
+                [
+                    12,
+                    "Xiaomi Mi Smart Band 6",
+                    "This bracelet tracks physical activity, notifications and heart rate, and also has the ability to measure blood oxygen.",
+                    "Xiaomi-Mi-Smart-Band-6",
+                    "2023-02-27 09:45:47.072000",
+                    34,
+                    41,
+                    "items\/Xiaomi-Mi-Smart-Band-6_wMwNqOM.jfif",
+                    1
+                ],
+                [
+                    16,
+                    "Tablet Samsung Galaxy Tab S7 FE",
+                    "This is a powerful tablet with a 12.4-inch display that supports S Pen mode. It also has an 8-core processor and 6GB of RAM, making it ideal for work and play.",
+                    "Galaxy-Tab-S7",
+                    "2023-02-27 09:50:34.621000",
+                    399,
+                    499,
+                    "items\/Galaxy-Tab-S7_CST8Ne2.jfif",
+                    1
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "store_itemtag",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"store_itemtag\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"name\" varchar(100) NOT NULL UNIQUE, \"slug\" varchar(100) NOT NULL UNIQUE, \"image\" varchar(100) NOT NULL, \"description\" text NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "slug",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "image",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "description",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    "TV",
+                    "tv",
+                    "categories\/TV_ppwkV1B.webp",
+                    "In this category you can find the latest TV models that will be perfect for any home and provide excellent picture and sound quality. We offer a wide selection of different brands, types and sizes so you can choose the TV that best suits your needs."
+                ],
+                [
+                    5,
+                    "Smarphones",
+                    "smartphone",
+                    "categories\/smartphone_a95wGX0.jpg",
+                    "In this category you will find the latest smartphone models from leading manufacturers. We offer a wide selection of different brands, types and colors so you can choose the smartphone that suits your needs."
+                ],
+                [
+                    6,
+                    "Devices",
+                    "tech",
+                    "categories\/tech_WrOLWez.jfif",
+                    "In this category you will find all the necessary equipment for your home and office. We offer a wide selection of different devices, from laptops and tablets to game consoles and cameras. All our products are high quality and reliable so you can be confident in their performance. We also offer many accessories for your equipment, such as cases and headphones."
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "store_taggeditem",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"store_taggeditem\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"object_id\" integer NOT NULL, \"content_type_id\" integer NOT NULL REFERENCES \"django_content_type\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"tag_id\" bigint NOT NULL REFERENCES \"store_itemtag\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "object_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "content_type_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"django_content_type\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "tag_id",
+                    "type": "bigint",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"store_itemtag\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+                [
+                    1,
+                    5,
+                    9,
+                    6
+                ],
+                [
+                    2,
+                    7,
+                    9,
+                    1
+                ],
+                [
+                    3,
+                    7,
+                    9,
+                    6
+                ],
+                [
+                    4,
+                    8,
+                    9,
+                    6
+                ],
+                [
+                    6,
+                    16,
+                    9,
+                    6
+                ],
+                [
+                    7,
+                    5,
+                    9,
+                    5
+                ],
+                [
+                    10,
+                    10,
+                    9,
+                    6
+                ],
+                [
+                    11,
+                    9,
+                    9,
+                    5
+                ],
+                [
+                    12,
+                    9,
+                    9,
+                    6
+                ],
+                [
+                    15,
+                    6,
+                    9,
+                    6
+                ],
+                [
+                    17,
+                    12,
+                    9,
+                    6
+                ]
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "taggit_tag",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"taggit_tag\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"name\" varchar(100) NOT NULL UNIQUE, \"slug\" varchar(100) NOT NULL UNIQUE)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                },
+                {
+                    "name": "slug",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "UNIQUE",
+                            "definition": "UNIQUE"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "taggit_taggeditem",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"taggit_taggeditem\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"object_id\" integer NOT NULL, \"content_type_id\" integer NOT NULL REFERENCES \"django_content_type\" (\"id\") DEFERRABLE INITIALLY DEFERRED, \"tag_id\" integer NOT NULL REFERENCES \"taggit_tag\" (\"id\") DEFERRABLE INITIALLY DEFERRED)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "object_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "content_type_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"django_content_type\" (\"id\") "
+                        }
+                    ]
+                },
+                {
+                    "name": "tag_id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "FOREIGN KEY",
+                            "definition": "REFERENCES \"taggit_tag\" (\"id\") "
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "table",
+            "database": null,
+            "name": "users_feedback",
+            "withoutRowId": false,
+            "strict": false,
+            "ddl": "CREATE TABLE \"users_feedback\" (\"id\" integer NOT NULL PRIMARY KEY AUTOINCREMENT, \"feedback_name\" varchar(50) NOT NULL, \"feedback_email\" varchar(254) NOT NULL, \"feedback_message\" text NOT NULL, \"created_at\" datetime NOT NULL)",
+            "columns": [
+                {
+                    "name": "id",
+                    "type": "integer",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL "
+                        },
+                        {
+                            "type": "PRIMARY KEY",
+                            "definition": "PRIMARY KEY AUTOINCREMENT"
+                        }
+                    ]
+                },
+                {
+                    "name": "feedback_name",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "feedback_email",
+                    "type": "varchar",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "feedback_message",
+                    "type": "text",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                },
+                {
+                    "name": "created_at",
+                    "type": "datetime",
+                    "constraints": [
+                        {
+                            "type": "NOT NULL",
+                            "definition": "NOT NULL"
+                        }
+                    ]
+                }
+            ],
+            "rows": [
+            ]
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_group_permissions_group_id_b120cbf9",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_group_permissions_group_id_b120cbf9\" ON \"auth_group_permissions\" (\"group_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_group_permissions_group_id_permission_id_0cd325b0_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"auth_group_permissions_group_id_permission_id_0cd325b0_uniq\" ON \"auth_group_permissions\" (\"group_id\", \"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_group_permissions_permission_id_84c5c92e",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_group_permissions_permission_id_84c5c92e\" ON \"auth_group_permissions\" (\"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_permission_content_type_id_2f476e4b",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_permission_content_type_id_2f476e4b\" ON \"auth_permission\" (\"content_type_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_permission_content_type_id_codename_01ab375a_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"auth_permission_content_type_id_codename_01ab375a_uniq\" ON \"auth_permission\" (\"content_type_id\", \"codename\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_user_groups_group_id_97559544",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_user_groups_group_id_97559544\" ON \"auth_user_groups\" (\"group_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_user_groups_user_id_6a12ed8b",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_user_groups_user_id_6a12ed8b\" ON \"auth_user_groups\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_user_groups_user_id_group_id_94350c0c_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"auth_user_groups_user_id_group_id_94350c0c_uniq\" ON \"auth_user_groups\" (\"user_id\", \"group_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_user_user_permissions_permission_id_1fbb5f2c",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_user_user_permissions_permission_id_1fbb5f2c\" ON \"auth_user_user_permissions\" (\"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_user_user_permissions_user_id_a95ead1b",
+            "unique": false,
+            "ddl": "CREATE INDEX \"auth_user_user_permissions_user_id_a95ead1b\" ON \"auth_user_user_permissions\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "auth_user_user_permissions_user_id_permission_id_14a6b632_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"auth_user_user_permissions_user_id_permission_id_14a6b632_uniq\" ON \"auth_user_user_permissions\" (\"user_id\", \"permission_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "cart_cart_user_id_9b4220b9",
+            "unique": false,
+            "ddl": "CREATE INDEX \"cart_cart_user_id_9b4220b9\" ON \"cart_cart\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "cart_cartitem_cart_id_370ad265",
+            "unique": false,
+            "ddl": "CREATE INDEX \"cart_cartitem_cart_id_370ad265\" ON \"cart_cartitem\" (\"cart_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "cart_cartitem_item_id_f315a26e",
+            "unique": false,
+            "ddl": "CREATE INDEX \"cart_cartitem_item_id_f315a26e\" ON \"cart_cartitem\" (\"item_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "checkout_order_user_id_6420a551",
+            "unique": false,
+            "ddl": "CREATE INDEX \"checkout_order_user_id_6420a551\" ON \"checkout_order\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "checkout_orderitem_item_id_eb2e3a4a",
+            "unique": false,
+            "ddl": "CREATE INDEX \"checkout_orderitem_item_id_eb2e3a4a\" ON \"checkout_orderitem\" (\"item_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "checkout_orderitem_order_id_b464a9c2",
+            "unique": false,
+            "ddl": "CREATE INDEX \"checkout_orderitem_order_id_b464a9c2\" ON \"checkout_orderitem\" (\"order_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_admin_log_content_type_id_c4bce8eb",
+            "unique": false,
+            "ddl": "CREATE INDEX \"django_admin_log_content_type_id_c4bce8eb\" ON \"django_admin_log\" (\"content_type_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_admin_log_user_id_c564eba6",
+            "unique": false,
+            "ddl": "CREATE INDEX \"django_admin_log_user_id_c564eba6\" ON \"django_admin_log\" (\"user_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_content_type_app_label_model_76bd3d3b_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"django_content_type_app_label_model_76bd3d3b_uniq\" ON \"django_content_type\" (\"app_label\", \"model\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "django_session_expire_date_a5c62663",
+            "unique": false,
+            "ddl": "CREATE INDEX \"django_session_expire_date_a5c62663\" ON \"django_session\" (\"expire_date\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "store_taggeditem_content_type_id_a36bcfd7",
+            "unique": false,
+            "ddl": "CREATE INDEX \"store_taggeditem_content_type_id_a36bcfd7\" ON \"store_taggeditem\" (\"content_type_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "store_taggeditem_object_id_ae812615",
+            "unique": false,
+            "ddl": "CREATE INDEX \"store_taggeditem_object_id_ae812615\" ON \"store_taggeditem\" (\"object_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "store_taggeditem_tag_id_05f5c95f",
+            "unique": false,
+            "ddl": "CREATE INDEX \"store_taggeditem_tag_id_05f5c95f\" ON \"store_taggeditem\" (\"tag_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "taggit_taggeditem_content_type_id_9957a03c",
+            "unique": false,
+            "ddl": "CREATE INDEX \"taggit_taggeditem_content_type_id_9957a03c\" ON \"taggit_taggeditem\" (\"content_type_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "taggit_taggeditem_content_type_id_object_id_196cc965_idx",
+            "unique": false,
+            "ddl": "CREATE INDEX \"taggit_taggeditem_content_type_id_object_id_196cc965_idx\" ON \"taggit_taggeditem\" (\"content_type_id\", \"object_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq",
+            "unique": true,
+            "ddl": "CREATE UNIQUE INDEX \"taggit_taggeditem_content_type_id_object_id_tag_id_4bb97a8e_uniq\" ON \"taggit_taggeditem\" (\"content_type_id\", \"object_id\", \"tag_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "taggit_taggeditem_object_id_e2d7d1df",
+            "unique": false,
+            "ddl": "CREATE INDEX \"taggit_taggeditem_object_id_e2d7d1df\" ON \"taggit_taggeditem\" (\"object_id\")"
+        },
+        {
+            "type": "index",
+            "database": null,
+            "name": "taggit_taggeditem_tag_id_f4f5b767",
+            "unique": false,
+            "ddl": "CREATE INDEX \"taggit_taggeditem_tag_id_f4f5b767\" ON \"taggit_taggeditem\" (\"tag_id\")"
+        }
+    ]
+}

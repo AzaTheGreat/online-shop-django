@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Thank you for your order!</h2>
+<p><strong>Your order:</strong>
+{% for item in order.items.all %}
+  <li>{{ item.quantity }} х {{ item.item.title }}</li>
+{% endfor %}
+<br>
+<p>For the amount of <b>{{ order.total_price }}</b> $.</p>
+</p>
+<p><strong>Delivering to the address:</strong></p>
+<p>{{ order.shipping_address }}</p>
+<div>
+  <a href="{% url 'users:user_orders' %}" class="button">My orders</a>
+</div>
+{% endblock %}
